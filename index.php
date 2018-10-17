@@ -20,10 +20,10 @@ unset($person['age']);
 $person['hair-color'] = 'brown';
 
 $task = [
-  'title' => 'Go on a run, you fat sack of snickers and beer',
-  'due' => 'Today',
-  'assigned_to' => 'me',
-  'completed' => false
+  "title" => "Go on a run, you fat sack of snickers and beer",
+  "due" => "Today",
+  "assigned_to" => "me",
+  "completed" => true
 ];
 
 require 'index.view.php';
