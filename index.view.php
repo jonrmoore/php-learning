@@ -64,6 +64,15 @@
           <?php endif; ?>
         </li>
       </ul>
+
+      <h2>Are you old enough?</h2>
+      <?php if(validate_age($person['age'])) : ?>
+        <h3>You are! Come on in!</h3>
+      <?php else : ?>
+        <h3>Nope! Go home.</h3>
+      <?php endif; ?>
+
+      <p><?= $person["age"]; ?></p>
     </main>
   </body>
 </html>

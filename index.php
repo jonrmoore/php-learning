@@ -1,5 +1,7 @@
 <?php
 
+require 'functions.php';
+
 $greeting = "Hello, " . htmlspecialchars($_GET['name']) . ".";
 $favoriteAnimal = "Your favorite animal is a " . htmlspecialchars($_GET['animal']) . ".";
 
@@ -16,7 +18,7 @@ $person = [
   "career" => "web developer"
 ];
 
-unset($person['age']);
+// unset($person['age']);
 $person['hair-color'] = 'brown';
 
 $task = [
@@ -25,5 +27,7 @@ $task = [
   "assigned_to" => "me",
   "completed" => true
 ];
+
+// dd($task);
 
 require 'index.view.php';
