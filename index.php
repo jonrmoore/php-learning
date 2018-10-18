@@ -20,6 +20,15 @@ class Task {
   public function isComplete() {
     return $this->completed;
   }
+
+  // GETTERS
+  public function getDescription() {
+    return $this->description;
+  }
+
+  public function getCompleted() {
+    return $this->completed;
+  }
 }
 
 $task = new Task("Go to the store");
@@ -33,7 +42,9 @@ $tasks = [
   new Task("Improve my SQL skills")
 ];
 
-dd($tasks);
+$tasks[0]->complete();
+
+// dd($tasks);
 
 // dd($task);
 
