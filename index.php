@@ -2,31 +2,66 @@
 
 require 'functions.php';
 
-$greeting = "Hello, " . htmlspecialchars($_GET['name']) . ".";
-$favoriteAnimal = "Your favorite animal is a " . htmlspecialchars($_GET['animal']) . ".";
+class Task {
 
-$names = [
-  "Peter",
-  "Paul",
-  "Mary"
+  protected $description;
+
+  protected $completed = false;
+
+  public function __construct($description)
+  {
+    $this->description = $description;
+  }
+
+  public function complete() {
+    $this->completed = true;
+  }
+
+  public function isComplete() {
+    return $this->completed;
+  }
+}
+
+$task = new Task("Go to the store");
+$task->complete();
+
+var_dump($task->isComplete());
+
+$tasks = [
+  new Task("Work on web portfolio"),
+  new Task("Build a Laravel app"),
+  new Task("Improve my SQL skills")
 ];
 
-// associative array
-$person = [
-  "name" => "Jon",
-  "age" => 28,
-  "career" => "web developer"
-];
+dd($tasks);
 
-// unset($person['age']);
-$person['hair-color'] = 'brown';
+// dd($task);
 
-$task = [
-  "title" => "Go on a run, you fat sack of snickers and beer",
-  "due" => "Today",
-  "assigned_to" => "me",
-  "completed" => true
-];
+// $greeting = "Hello, " . htmlspecialchars($_GET['name']) . ".";
+// $favoriteAnimal = "Your favorite animal is a " . htmlspecialchars($_GET['animal']) . ".";
+
+// $names = [
+//   "Peter",
+//   "Paul",
+//   "Mary"
+// ];
+
+// // associative array
+// $person = [
+//   "name" => "Jon",
+//   "age" => 28,
+//   "career" => "web developer"
+// ];
+
+// // unset($person['age']);
+// $person['hair-color'] = 'brown';
+
+// $task = [
+//   "title" => "Go on a run, you fat sack of snickers and beer",
+//   "due" => "Today",
+//   "assigned_to" => "me",
+//   "completed" => true
+// ];
 
 // dd($task);
 
