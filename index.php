@@ -2,78 +2,16 @@
 
 require 'functions.php';
 
-class Task {
-
-  protected $description;
-
-  protected $completed = false;
-
-  public function __construct($description)
-  {
-    $this->description = $description;
-  }
-
-  public function complete() {
-    $this->completed = true;
-  }
-
-  public function isComplete() {
-    return $this->completed;
-  }
-
-  // GETTERS
-  public function getDescription() {
-    return $this->description;
-  }
-
-  public function getCompleted() {
-    return $this->completed;
-  }
+try {
+  $pdo = new PDO("mysql:host=127.0.0.1;dbname=myTodo", "root", "");
+} catch (PDOException $e) {
+  die("Could not connect");
 }
 
-$task = new Task("Go to the store");
-$task->complete();
+$statement = $pdo->prepare('SELECT * FROM todos');
+$statement->execute();
 
-var_dump($task->isComplete());
-
-$tasks = [
-  new Task("Work on web portfolio"),
-  new Task("Build a Laravel app"),
-  new Task("Improve my SQL skills")
-];
-
-$tasks[0]->complete();
-
-// dd($tasks);
-
-// dd($task);
-
-// $greeting = "Hello, " . htmlspecialchars($_GET['name']) . ".";
-// $favoriteAnimal = "Your favorite animal is a " . htmlspecialchars($_GET['animal']) . ".";
-
-// $names = [
-//   "Peter",
-//   "Paul",
-//   "Mary"
-// ];
-
-// // associative array
-// $person = [
-//   "name" => "Jon",
-//   "age" => 28,
-//   "career" => "web developer"
-// ];
-
-// // unset($person['age']);
-// $person['hair-color'] = 'brown';
-
-// $task = [
-//   "title" => "Go on a run, you fat sack of snickers and beer",
-//   "due" => "Today",
-//   "assigned_to" => "me",
-//   "completed" => true
-// ];
-
-// dd($task);
+$tasks = $statement->fetchAll(PDO::FETCH_OBJ);
+// echo "<pre>"; var_dump($results[0]->description); echo "</pre>";
 
 require 'index.view.php';

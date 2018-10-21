@@ -26,10 +26,10 @@
       <ul>
         <?php foreach ($tasks as $task) : ?>
           <li>
-            <?php if($task->isComplete()) : ?>
-              <strike><?= $task->getDescription(); ?></strike>
+            <?php if($task->completed) : ?>
+              <strike><?= $task->description; ?></strike>
             <?php else : ?>
-              <?= $task->getDescription(); ?>
+              <?= $task->description; ?>
             <?php endif; ?>
           </li>
         <?php endforeach; ?>
