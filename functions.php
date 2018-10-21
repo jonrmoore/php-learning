@@ -6,10 +6,12 @@ function dd ($data) {
   echo "</pre";
 }
 
-function validate_age($age) {
-  if ($age >= 21) {
-    return true;
-  }
 
-  return false;
+
+function fetchAllTasks($pdo)
+{
+  $statement = $pdo->prepare('SELECT * FROM todos');
+  $statement->execute();
+  
+  return $statement->fetchAll(PDO::FETCH_CLASS, "Task");
 }
