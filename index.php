@@ -1,11 +1,11 @@
 <?php
 
-require 'database/Connection.php';
-require 'database/QueryBuilder.php';
-require 'Task.php';
+$query = require 'bootstrap.php';
 
-$pdo = Connection::make();
-$query = new QueryBuilder($pdo);
+require 'Task.php';
 $tasks = $query->selectAll("todos");
 
+
+// die(format(var_dump($tasks)));
+// echo "<pre>"; die(var_dump($tasks)); echo "</pre>";
 require 'index.view.php';
